@@ -1,0 +1,23 @@
+[tool.black]
+line-length = 90
+include = '\.pyi?$'
+exclude = '''
+    /(
+        \.git
+      | \.hg
+      | \.mypy_cache
+      | \.tox
+      | \.venv
+      | _build
+      | buck-out
+      | build
+      | dist
+
+      # The following are specific to Black, you probably don't want those.
+      | blib2to3
+      | tests/data
+    )/
+    '''
+
+[tool.bandit.assert_used]
+skips = ['*_test.py', '*/test_*.py']
