@@ -108,18 +108,9 @@ copilot init --app text-sum              \
 
 
 # References
-https://blog.jcharistech.com/2021/01/21/how-to-save-uploaded-files-to-directory-in-streamlit-apps/
 
 https://nicjac.dev/posts/how-to-build-machine-learning-demo-in-2022/
 
-https://levelup.gitconnected.com/python-streamlit-uploading-and-using-files-cf797dc30be3?gi=ddf129169a51
-
-https://accretiondisc.com/blog/2020/05/24/extracting-text-from-word-docx-files-using-pandoc/
-
 https://aws.amazon.com/blogs/machine-learning/part-2-set-up-a-text-summarization-project-with-hugging-face-transformers/
 
-https://github.com/floleuerer/textract-docker/blob/main/Dockerfile
-
 https://www.section.io/engineering-education/how-to-deploy-streamlit-app-with-docker/
-
-https://github.com/orchest/streamlit-docker
