@@ -1,7 +1,7 @@
 # Deploy an Machine Learning Service Quickly on Fargate using Streamlit and AWS Copilot
 
 This repository shows show to rapidly deploy a Machine Learning ML service on Amazon Web Services (AWS) Cloud, using AWS Fargate and Streamlit.
-The primary of focus of this exampale is how to get an ML service up and running quickly on AWS.
+The primary of focus of this example is how to get an ML service up and running quickly on AWS.
 For reference, you will create a text summarization application service using the Hugging Face Transformers library.
 
 
@@ -9,7 +9,7 @@ For reference, you will create a text summarization application service using th
 ![alt text](diagram/textsumapp.png "Text Sum App")
 
 * Machine Learning as Service
-* Automated backend and deploy using the command line and AWS sercies
+* Automated backend and deploy using the command line and AWS services
 * Automated fronted using AWS Fargate and Steamlit
 
 ## Deploy using AWS Copilot
@@ -19,7 +19,7 @@ See the [docs](https://github.com/aws/copilot-cli)
 
 You can initialize the app and configure the resource requirements in the copilot application manifest.yml file by using following steps:
 
-1. Set up the application and enviroment details. 
+1. Set up the application and environment details. 
 Execute below commands from the application home directory. Copilot prompts you through the set up of your application. 
 ```
 copilot init
@@ -67,24 +67,25 @@ To run locally inside of the virtual environment:
 `streamlit run streamlit-ui/main.py --logger.level=debug`
 
 
-If you want to buidl the image and run in locally.
+If you want to build the image and run in locally.
 ```
-docker build -t aws-summarizer:latest .  --platform=linux/amd64
+docker build -t summarizer:latest .  --platform=linux/amd64
 
-docker run -it -p 8501:8501 aws-summarizer:latest
+docker run -it -p 8501:8501 summarizer:latest
 ```
 
 ### Pushing to ECR
 
 ```
+REGION=$(aws configure get profile.default.region)
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query 'Account' --output text)
-aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com
+aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
 
-docker build -t aws-summarizer . --platform=linux/amd64
+docker build -t summarizer . --platform=linux/amd64
 
-docker tag aws-summarizer:latest ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/aws-summarizer:latest
+docker tag summarizer:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/summarizer:latest
 
-docker push ${AWS_ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/aws-summarizer:latest
+docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/summarizer:latest
 ```
 
 Build out copilit using the local image name
@@ -94,17 +95,10 @@ May need to actually select local image name to build from
 copilot init --app text-sum              \
   --name text-sum-api                             \
   --type 'Load Balanced Web Service'     \
-  —-image aws-summarizer       \
+  —-image summarizer       \
   --deploy
 ```
 
-```
-copilot init --app text-sum              \
-  --name text-sum-api                             \
-  --type 'Load Balanced Web Service'     \
-  —-image aws-summarizer       \
-  --deploy
-```
 
 
 # References
