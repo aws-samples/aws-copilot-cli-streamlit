@@ -1,7 +1,9 @@
 # Deploy an Machine Learning Service Quickly on Fargate using Streamlit and AWS Copilot
 
 This repository shows show to rapidly deploy a Machine Learning ML service on Amazon Web Services (AWS) Cloud, using AWS Fargate and Streamlit.
-The primary of focus of this example is how to get an ML service up and running quickly on AWS.
+
+The primary of focus of this pattern is how to get an ML service up and running quickly on AWS.
+
 For reference, you will create a text summarization application service using the Hugging Face Transformers library.
 
 
@@ -10,7 +12,7 @@ For reference, you will create a text summarization application service using th
 
 * Machine Learning as Service
 * Automated backend and deploy using the command line and AWS services
-* Automated fronted using AWS Fargate and Steamlit
+* Automated fronted using AWS Fargate and Streamlit
 
 ## Deploy using AWS Copilot
 ​
@@ -88,7 +90,7 @@ docker tag summarizer:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/s
 docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/summarizer:latest
 ```
 
-Build out copilit using the local image name
+Build out copilot using the local image name
 May need to actually select local image name to build from
 
 ```
