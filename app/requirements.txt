@@ -1,5 +1,5 @@
 docx2txt==0.8
 python-pptx==0.6.21
-streamlit==1.9.2
+streamlit==1.30.0
 textract==1.6.5
 xlrd==1.2.0
